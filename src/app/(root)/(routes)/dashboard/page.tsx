@@ -40,7 +40,7 @@ export default async function Dashboard() {
             <p className='mb-8 mt-2 text-center text-sm font-normal leading-6 text-muted-foreground'>
               You don&apos;t have any links yet. Start creating content.
             </p>
-            <ButtonModal />
+            <ButtonModal variant='outline' />
           </div>
         </div>
       )}
