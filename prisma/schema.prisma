@@ -53,6 +53,7 @@ model User {
 
   accounts Account[]
   sessions Session[]
+  links    Link[]
 
   @@map(name: "users")
 }
@@ -64,4 +65,16 @@ model VerificationToken {
 
   @@unique([identifier, token])
   @@map(name: "verification_tokens")
+}
+
+model Link {
+  id          Int      @id @default(autoincrement())
+  url         String   @db.Text
+  domain      String   @unique
+  description String?
+  createdAt   DateTime @default(now())
+  createdBy   User     @relation(fields: [creatorId], references: [id], onDelete: Cascade)
+  creatorId   String
+
+  @@index(domain)
 }
