@@ -22,11 +22,12 @@ import { Dispatch, SetStateAction } from 'react'
 
 interface LinkFormProps {
   defaultValues?: LinkForm
+  id?: string
   setIsOpen: Dispatch<SetStateAction<boolean>>
 }
 
 export function LinkForm(props: LinkFormProps) {
-  const { defaultValues, setIsOpen } = props
+  const { defaultValues, setIsOpen, id } = props
 
   const form = useForm<LinkForm>({
     resolver: zodResolver(LinkSchema),
@@ -36,6 +37,33 @@ export function LinkForm(props: LinkFormProps) {
   const router = useRouter()
 
   async function onSubmit(data: LinkForm) {
+    if (defaultValues) {
+      const response = await fetch(`/api/link/${id}`, {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          data,
+        }),
+      })
+
+      if (response.ok) {
+        router.refresh()
+        toast({
+          description: 'Link create with success',
+        })
+        setIsOpen(false)
+        return
+      }
+
+      form.setError('domain', {
+        message: 'Existe um domain com esse nome ja',
+      })
+
+      return
+    }
+
     const response = await fetch('/api/link', {
       method: 'POST',
       headers: {
@@ -82,21 +110,23 @@ export function LinkForm(props: LinkFormProps) {
           )}
         />
 
-        <FormField
-          control={form.control}
-          name='domain'
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel htmlFor='domain' className='text-right'>
-                Domain
-              </FormLabel>
-              <FormControl>
-                <Input id='domain' {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
+        {!defaultValues && (
+          <FormField
+            control={form.control}
+            name='domain'
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel htmlFor='domain' className='text-right'>
+                  Domain
+                </FormLabel>
+                <FormControl>
+                  <Input id='domain' {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+        )}
 
         <FormField
           control={form.control}

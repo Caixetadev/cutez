@@ -7,13 +7,14 @@ import { LinkForm } from './link-form'
 import { Dispatch, SetStateAction } from 'react'
 
 interface ModalLinkProps {
+  id?: string
   defaultValues?: LinkData
   isOpen: boolean
   setIsOpen: Dispatch<SetStateAction<boolean>>
 }
 
 export function ModalLink(props: ModalLinkProps) {
-  const { defaultValues, isOpen, setIsOpen } = props
+  const { defaultValues, isOpen, setIsOpen, id } = props
 
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
@@ -21,7 +22,7 @@ export function ModalLink(props: ModalLinkProps) {
         <DialogHeader>
           <DialogTitle>Create link</DialogTitle>
         </DialogHeader>
-        <LinkForm defaultValues={defaultValues} setIsOpen={setIsOpen} />
+        <LinkForm id={id} defaultValues={defaultValues} setIsOpen={setIsOpen} />
       </DialogContent>
     </Dialog>
   )

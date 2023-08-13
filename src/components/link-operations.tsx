@@ -29,7 +29,7 @@ interface LinkOperationsProps {
   domain: string
   url: string
   description?: string
-  id: number
+  id: string
 }
 
 export function LinkOperations(props: LinkOperationsProps) {
@@ -101,6 +101,7 @@ export function LinkOperations(props: LinkOperationsProps) {
       </AlertDialog>
 
       <ModalLink
+        id={id}
         isOpen={showEdit}
         setIsOpen={setShowEdit}
         defaultValues={{ domain, url, description }}

@@ -22,7 +22,7 @@ export function LinkItem({ data }: LinkItemProps) {
             <div className='flex items-center justify-between'>
               <div className='flex items-center'>
                 <CardTitle>{item.domain}</CardTitle>
-                <Copy text={item.url} />
+                <Copy text={item.domain} />
               </div>
               <div>
                 <LinkOperations
