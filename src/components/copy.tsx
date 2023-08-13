@@ -8,7 +8,7 @@ export function Copy({ text }: { text: string }) {
   const { toast } = useToast()
 
   const onCopy = () => {
-    navigator.clipboard.writeText(text)
+    navigator.clipboard.writeText(`${process.env.NEXT_PUBLIC_URL}/go/${text}`)
 
     toast({
       description: 'Link copied with success',
