@@ -102,6 +102,15 @@ export async function GET(
       return new Response(null, { status: 404 })
     }
 
+    await db.link.update({
+      where: {
+        domain: params.linkId,
+      },
+      data: {
+        clicks: { increment: 1 },
+      },
+    })
+
     return new Response(JSON.stringify(data), { status: 200 })
   } catch (error) {
     if (error instanceof z.ZodError) {
