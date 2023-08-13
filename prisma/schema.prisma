@@ -68,7 +68,7 @@ model VerificationToken {
 }
 
 model Link {
-  id          Int      @id @default(autoincrement())
+  id          String   @id @default(uuid())
   url         String   @db.Text
   domain      String   @unique
   description String?
