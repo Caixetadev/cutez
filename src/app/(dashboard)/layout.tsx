@@ -24,7 +24,7 @@ export default async function DashboardLayout({
   return (
     <>
       <header className='border-b'>
-        <nav className='container flex h-16 items-center justify-between py-4'>
+        <nav className='container flex h-16 flex-wrap items-center justify-between py-4'>
           <Link href='/'>
             <Logo />
           </Link>

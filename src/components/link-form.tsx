@@ -2,6 +2,7 @@
 
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
+import { nanoid } from 'nanoid'
 
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
@@ -19,6 +20,7 @@ import {
 import { useRouter } from 'next/navigation'
 import { toast } from './ui/use-toast'
 import { Dispatch, SetStateAction } from 'react'
+import { Shuffle } from 'lucide-react'
 
 interface LinkFormProps {
   defaultValues?: LinkForm
@@ -33,6 +35,11 @@ export function LinkForm(props: LinkFormProps) {
     resolver: zodResolver(LinkSchema),
     defaultValues: defaultValues ?? { description: '', domain: '', url: '' },
   })
+
+  function randomDomain() {
+    const random = nanoid(6)
+    form.setValue('domain', random)
+  }
 
   const router = useRouter()
 
@@ -116,9 +123,17 @@ export function LinkForm(props: LinkFormProps) {
             name='domain'
             render={({ field }) => (
               <FormItem>
-                <FormLabel htmlFor='domain' className='text-right'>
-                  Domain
-                </FormLabel>
+                <div className='flex items-center justify-between'>
+                  <FormLabel htmlFor='domain'>Domain</FormLabel>
+                  <button
+                    onClick={randomDomain}
+                    type='button'
+                    className='flex items-center justify-center text-sm text-muted-foreground transition hover:text-foreground'
+                  >
+                    <Shuffle className='mr-2 h-4 w-4' />
+                    Randomize
+                  </button>
+                </div>
                 <FormControl>
                   <Input id='domain' {...field} />
                 </FormControl>

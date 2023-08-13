@@ -87,6 +87,8 @@ export async function GET(
   try {
     const { params } = routeContextSchema.parse(context)
 
+    console.log(req.geo?.country)
+
     const data = await db.link.findFirst({
       where: {
         domain: {
