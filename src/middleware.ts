@@ -11,18 +11,25 @@ export default withAuth(
     const slug = req.nextUrl.pathname.split('/')
 
     if (slug[1] === 'go') {
-      const data = await fetch(
-        `${req.nextUrl.origin}/api/link/${slug[slug.length - 1]}`
-      )
+      try {
+        const response = await fetch(
+          `${req.nextUrl.origin}/api/link/${slug[slug.length - 1]}`
+        )
+        const data = await response.json()
 
-      if (data.status === 404) {
-        return NextResponse.redirect(req.nextUrl.origin)
-      }
+        if (!response.ok) {
+          throw new Error(response.statusText)
+        }
 
-      const dataToJson = await data.json()
+        if (data.status === 404) {
+          return NextResponse.redirect(req.nextUrl.origin)
+        }
 
-      if (data?.url) {
-        return NextResponse.redirect(new URL(dataToJson?.url))
+        if (data?.url) {
+          return NextResponse.redirect(new URL(data?.url))
+        }
+      } catch (error: any) {
+        return new Response(error.message, { status: 429 })
       }
     }
 

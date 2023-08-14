@@ -1,7 +1,10 @@
 import { authOptions } from '@/lib/auth'
 import { db } from '@/lib/db'
+import { rateLimit } from '@/lib/rate-limit'
+import { redis } from '@/lib/redis'
 import { linkPatchSchema } from '@/lib/validations/link'
-import { url } from 'inspector'
+
+import { ipAddress } from '@vercel/edge'
 
 import { getServerSession } from 'next-auth'
 import { NextRequest, NextResponse } from 'next/server'
@@ -87,7 +90,21 @@ export async function GET(
   try {
     const { params } = routeContextSchema.parse(context)
 
-    console.log(req.geo?.country)
+    const ip = ipAddress(req) || '63.141.56.109'
+
+    const { success } = await rateLimit(ip)
+
+    if (!success) {
+      throw new Error('Rate limit')
+    }
+
+    const cachedData: any = await redis.get(`link:${params.linkId}`)
+
+    if (cachedData) {
+      return new Response(JSON.stringify(cachedData) as any, {
+        status: 200,
+      })
+    }
 
     const data = await db.link.findFirst({
       where: {
@@ -103,6 +120,13 @@ export async function GET(
     if (!data) {
       return new Response(null, { status: 404 })
     }
+
+    const THIRTY_MINUTES = 30 * 60
+
+    await redis.set(`link:${params.linkId}`, JSON.stringify(data), {
+      nx: true,
+      ex: THIRTY_MINUTES,
+    })
 
     await db.link.update({
       where: {
