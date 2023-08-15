@@ -7,7 +7,7 @@ import { linkPatchSchema } from '@/lib/validations/link'
 import { ipAddress } from '@vercel/edge'
 
 import { getServerSession } from 'next-auth'
-import { NextRequest, NextResponse } from 'next/server'
+import { NextRequest } from 'next/server'
 import { z } from 'zod'
 
 const routeContextSchema = z.object({
@@ -29,12 +29,17 @@ export async function DELETE(
 
     const { params } = routeContextSchema.parse(context)
 
-    await db.link.delete({
+    const data = await db.link.delete({
       where: {
         id: params.linkId,
         creatorId: session.user.id,
       },
+      select: {
+        domain: true,
+      },
     })
+
+    await redis.del(`link:${data.domain}`)
 
     return new Response(null, { status: 200 })
   } catch (error) {
@@ -62,7 +67,7 @@ export async function PATCH(
     const json = await req.json()
     const body = linkPatchSchema.parse(json.data)
 
-    await db.link.update({
+    const data = await db.link.update({
       where: {
         id: params.linkId,
         creatorId: session.user.id,
@@ -71,7 +76,13 @@ export async function PATCH(
         url: body.url,
         description: body.description,
       },
+      select: {
+        domain: true,
+        url: true,
+      },
     })
+
+    await redis.set(`link:${data.domain}`, JSON.stringify({ url: data.url }))
 
     return new Response(null, { status: 200 })
   } catch (error) {
