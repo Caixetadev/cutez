@@ -20,7 +20,9 @@ export function ModalLink(props: ModalLinkProps) {
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
       <DialogContent className='sm:max-w-[425px]'>
         <DialogHeader>
-          <DialogTitle>Create link</DialogTitle>
+          <DialogTitle>
+            {defaultValues ? 'Edit link' : 'Create link'}
+          </DialogTitle>
         </DialogHeader>
         <LinkForm id={id} defaultValues={defaultValues} setIsOpen={setIsOpen} />
       </DialogContent>
