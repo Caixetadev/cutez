@@ -15,11 +15,13 @@ export default withAuth(
       return NextResponse.redirect(new URL('/dashboard', req.url))
     }
 
-    const pages = ['/login', '/dashboard', '/']
+    const pages = ['/login', '/dashboard', '/', '/mockup.jpg', '/mockup2.png']
 
     if (
       !pages.includes(req.nextUrl.pathname) &&
-      !req.nextUrl.pathname.startsWith('/api')
+      !req.nextUrl.pathname.startsWith('/api') &&
+      !req.nextUrl.pathname.startsWith('/_next') &&
+      !req.nextUrl.pathname.startsWith('/public')
     ) {
       try {
         const response = await fetch(
