@@ -7,10 +7,11 @@ import {
 } from '@/components/ui/card'
 import { Copy } from '@/components/copy'
 import { LinkOperations } from '@/components/link-operations'
-import { Link } from '@prisma/client'
+import { Link as LinkData } from '@prisma/client'
+import Link from 'next/link'
 
 interface LinkItemProps {
-  data: Link[]
+  data: LinkData[]
 }
 
 export function LinkItem({ data }: LinkItemProps) {
@@ -21,7 +22,12 @@ export function LinkItem({ data }: LinkItemProps) {
           <CardHeader className='flex flex-col justify-center'>
             <div className='flex items-center justify-between'>
               <div className='flex items-center'>
-                <CardTitle>{item.domain}</CardTitle>
+                <CardTitle>
+                  <Link href={`/${item.domain}`} target='_blank'>
+                    {item.domain}
+                  </Link>
+                </CardTitle>
+
                 <Copy text={item.domain} />
               </div>
               <div>
@@ -33,10 +39,15 @@ export function LinkItem({ data }: LinkItemProps) {
                 />
               </div>
             </div>
-            <CardDescription>{item.url}</CardDescription>
+            <CardDescription className='max-w-lg truncate'>
+              {item.url}
+            </CardDescription>
           </CardHeader>
           <CardContent>
-            <p className='text-muted-foreground'>{item.description}</p>
+            <p className='break-all text-sm text-muted-foreground'>
+              {item.description && item.description}
+              {!item.description && 'No description.'}
+            </p>
           </CardContent>
         </Card>
       ))}
