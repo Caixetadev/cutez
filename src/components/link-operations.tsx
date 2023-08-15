@@ -104,7 +104,11 @@ export function LinkOperations(props: LinkOperationsProps) {
           </AlertDialogHeader>
           <AlertDialogFooter>
             <AlertDialogCancel>Cancel</AlertDialogCancel>
-            <AlertDialogAction variant='destructive' onClick={deleteLink}>
+            <AlertDialogAction
+              disabled={isDeleteLoading}
+              variant='destructive'
+              onClick={deleteLink}
+            >
               {isDeleteLoading && (
                 <Loader2 className='mr-2 h-4 w-4 animate-spin' />
               )}
