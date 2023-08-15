@@ -19,7 +19,8 @@ export default withAuth(
 
     if (
       !pages.includes(req.nextUrl.pathname) &&
-      !req.nextUrl.pathname.startsWith('/api')
+      !req.nextUrl.pathname.startsWith('/api') &&
+      !req.nextUrl.pathname.startsWith('/_next')
     ) {
       try {
         const response = await fetch(
