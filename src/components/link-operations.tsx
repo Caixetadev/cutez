@@ -1,5 +1,23 @@
 'use client'
 
+import { useRouter } from 'next/navigation'
+
+import { MouseEvent, useState } from 'react'
+
+import { Loader2, MoreVertical } from 'lucide-react'
+
+import { Button } from '@/components/ui/button'
+import {
+  AlertDialog,
+  AlertDialogContent,
+  AlertDialogTitle,
+  AlertDialogDescription,
+  AlertDialogCancel,
+  AlertDialogAction,
+  AlertDialogHeader,
+  AlertDialogFooter,
+} from '@/components/ui/alert-dialog'
+
 import {
   DropdownMenu,
   DropdownMenuTrigger,
@@ -8,22 +26,8 @@ import {
   DropdownMenuSeparator,
 } from '@/components/ui/dropdown-menu'
 
-import { Loader2, MoreVertical } from 'lucide-react'
-
-import { Button } from './ui/button'
-import {
-  AlertDialog,
-  AlertDialogContent,
-  AlertDialogTitle,
-  AlertDialogDescription,
-  AlertDialogCancel,
-  AlertDialogAction,
-} from '@/components/ui/alert-dialog'
-import { AlertDialogHeader, AlertDialogFooter } from './ui/alert-dialog'
-import { MouseEvent, useState } from 'react'
-
-import { ModalLink } from './modal-link'
-import { useRouter } from 'next/navigation'
+import { ModalLink } from '@/components/modal-link'
+import { toast } from '@/components/ui/use-toast'
 
 interface LinkOperationsProps {
   domain: string
@@ -42,16 +46,26 @@ export function LinkOperations(props: LinkOperationsProps) {
   const router = useRouter()
 
   async function deleteLink(event: MouseEvent<HTMLButtonElement>) {
-    event.preventDefault()
-    setIsDeleteLoading(true)
+    try {
+      event.preventDefault()
 
-    const deleted = await fetch(`/api/link/${id}`, {
-      method: 'DELETE',
-    })
+      setIsDeleteLoading(true)
 
-    if (deleted) {
-      setIsDeleteLoading(false)
+      await fetch(`/api/link/${id}`, {
+        method: 'DELETE',
+      })
+
+      toast({
+        description: 'Link deleted successfully.',
+      })
       router.refresh()
+    } catch (error) {
+      toast({
+        description: 'An error occurred while deleting the link.',
+        variant: 'destructive',
+      })
+    } finally {
+      setIsDeleteLoading(false)
     }
   }
 
