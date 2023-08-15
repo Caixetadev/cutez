@@ -1,12 +1,18 @@
 'use client'
 
+import { useRouter } from 'next/navigation'
+
+import { Dispatch, SetStateAction } from 'react'
+
+import { Loader2, Shuffle } from 'lucide-react'
+
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
+
 import { nanoid } from 'nanoid'
 
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
-
 import { LinkSchema, LinkForm } from '@/lib/validations/link'
 import { Button } from '@/components/ui/button'
 import {
@@ -17,10 +23,7 @@ import {
   FormLabel,
   FormMessage,
 } from '@/components/ui/form'
-import { useRouter } from 'next/navigation'
-import { toast } from './ui/use-toast'
-import { Dispatch, SetStateAction } from 'react'
-import { Shuffle } from 'lucide-react'
+import { toast } from '@/components/ui/use-toast'
 
 interface LinkFormProps {
   defaultValues?: LinkForm
@@ -159,7 +162,12 @@ export function LinkForm(props: LinkFormProps) {
           )}
         />
 
-        <Button type='submit'>{defaultValues ? 'Save' : 'Create'}</Button>
+        <Button type='submit' disabled={form.formState.isSubmitting}>
+          {form.formState.isSubmitting && (
+            <Loader2 className='mr-2 h-4 w-4 animate-spin' />
+          )}
+          {defaultValues ? 'Save' : 'Create'}
+        </Button>
       </form>
     </Form>
   )
