@@ -52,14 +52,9 @@ export default function RootPage() {
             </Button>
           </div>
         </div>
-        <Image
-          width={0}
-          height={0}
-          sizes='100vw'
-          style={{ width: '1000px', height: 'auto' }}
-          src={'/mockup.jpg'}
-          alt=''
-        />
+        <div className='relative h-[616px] w-[1000px]'>
+          <Image priority sizes='100vw' src={'/mockup.jpg'} fill alt='' />
+        </div>
       </section>
 
       <section className='container py-8 sm:py-24'>
