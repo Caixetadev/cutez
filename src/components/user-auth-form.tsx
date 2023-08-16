@@ -28,7 +28,7 @@ export function UserAuthForm() {
               <Loader2 className='h-4 w-4 animate-spin' />
             ) : (
               <GithubLogo />
-            )}{' '}
+            )}
           </Button>
           <Button
             variant='outline'
@@ -42,7 +42,7 @@ export function UserAuthForm() {
               <Loader2 className='h-4 w-4 animate-spin' />
             ) : (
               <GoogleLogo />
-            )}{' '}
+            )}
           </Button>
           <Button
             variant='outline'
@@ -56,7 +56,7 @@ export function UserAuthForm() {
               <Loader2 className='h-4 w-4 animate-spin' />
             ) : (
               <Twitter className='h-4 w-4' />
-            )}{' '}
+            )}
           </Button>
         </div>
       </form>

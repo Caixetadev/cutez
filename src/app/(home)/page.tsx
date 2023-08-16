@@ -32,10 +32,10 @@ export default function RootPage() {
             </Link>
             <ChevronRight className='h-4 w-4' />
           </Badge>
-          <h1 className='text-center text-5xl font-bold text-gray-900'>
+          <h1 className='text-balance text-center text-5xl font-bold text-gray-900'>
             Create Links Simply, All in One Place
           </h1>
-          <p className='max-w-[42rem] text-center text-xl text-muted-foreground'>
+          <p className='max-w-[42rem] text-balance text-center text-xl text-muted-foreground'>
             Lorem ipsum dolor, sit amet consectetur adipisicing elit. Qui eum
             minus ea recusandae nihil sequi, quae magnam aut possimus repellat.
           </p>
@@ -114,10 +114,10 @@ export default function RootPage() {
       <section className='container py-24'>
         <div className='flex flex-col items-center gap-4 py-16'>
           <Badge variant='secondary'>Features</Badge>
-          <h2 className='py-2 text-center text-4xl font-bold tracking-tight text-gray-900'>
+          <h2 className='text-balance py-2 text-center text-4xl font-bold tracking-tight text-gray-900'>
             Powerful Features for Streamlined Link Management
           </h2>
-          <p className='max-w-[800px] text-center text-xl text-muted-foreground'>
+          <p className='max-w-[800px] text-balance text-center text-xl text-muted-foreground'>
             This app presents a variety of features tailored to simplify and
             enhance your link management experience. From customizable short
             URLs to detailed analytics and link history.
