@@ -52,8 +52,8 @@ export default function RootPage() {
             </Button>
           </div>
         </div>
-        <div className='relative h-[616px] w-[1000px]'>
-          <Image priority sizes='100vw' src={'/mockup.jpg'} fill alt='' />
+        <div className='relative flex w-full max-w-full justify-center'>
+          <Image priority width={1000} height={600} src='/mockup.jpg' alt='' />
         </div>
       </section>
 
