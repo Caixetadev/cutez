@@ -43,7 +43,7 @@
     "react-hook-form": "^7.45.4",
     "sharp": "^0.32.4",
     "tailwind-merge": "^1.14.0",
-    "tailwindcss": "3.3.3",
+    "tailwindcss": "0.0.0-insiders.4f404ff",
     "tailwindcss-animate": "^1.0.6",
     "typescript": "5.1.6",
     "zod": "^3.21.4"
