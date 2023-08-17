@@ -13,7 +13,17 @@ import { Button } from '@/components/ui/button'
 import { Navbar } from '@/components/navbar'
 import { Footer } from '@/components/footer'
 
-export default function RootPage() {
+import { link } from '@/lib/http/link'
+import { user } from '@/lib/http/user'
+
+export default async function RootPage() {
+  const [links, clicks, avgClicks, users] = await Promise.all([
+    link.total,
+    link.clicks,
+    link.avgClicks,
+    user.total,
+  ])
+
   return (
     <>
       <Navbar />
@@ -74,7 +84,7 @@ export default function RootPage() {
                   Avg. Clicks per Link
                 </dt>
                 <dd className='order-first text-5xl font-semibold tracking-tight text-gray-900'>
-                  <span>247</span>
+                  <span>{avgClicks._avg.clicks?.toFixed(2)}</span>
                 </dd>
               </div>
               <div className='mx-auto flex max-w-xs flex-col gap-y-4'>
@@ -82,7 +92,7 @@ export default function RootPage() {
                   Links Shortened
                 </dt>
                 <dd className='order-first text-5xl font-semibold tracking-tight text-gray-900'>
-                  <span>206</span>
+                  <span>{links}</span>
                 </dd>
               </div>
               <div className='mx-auto flex max-w-xs flex-col gap-y-4'>
@@ -90,15 +100,15 @@ export default function RootPage() {
                   Users
                 </dt>
                 <dd className='order-first text-5xl font-semibold tracking-tight text-gray-900'>
-                  <span>47</span>
+                  <span>{users}</span>
                 </dd>
               </div>
               <div className='mx-auto flex max-w-xs flex-col gap-y-4'>
                 <dt className='text-base leading-7 text-muted-foreground'>
-                  Clicks Today
+                  Clicks
                 </dt>
                 <dd className='order-first text-5xl font-semibold tracking-tight text-gray-900'>
-                  <span>874K</span>
+                  <span>{clicks._sum.clicks}</span>
                 </dd>
               </div>
             </dl>
