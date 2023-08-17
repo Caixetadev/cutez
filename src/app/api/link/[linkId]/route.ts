@@ -2,6 +2,7 @@ import { authOptions } from '@/lib/auth'
 import { db } from '@/lib/db'
 import { rateLimit } from '@/lib/rate-limit'
 import { redis } from '@/lib/redis'
+import { updateLinkClicks } from '@/lib/update-link-clicks'
 import { linkPatchSchema } from '@/lib/validations/link'
 
 import { ipAddress } from '@vercel/edge'
@@ -112,6 +113,8 @@ export async function GET(
     const cachedData: any = await redis.get(`link:${params.linkId}`)
 
     if (cachedData) {
+      updateLinkClicks(params.linkId)
+
       return new Response(JSON.stringify(cachedData) as any, {
         status: 200,
       })
@@ -139,14 +142,7 @@ export async function GET(
       ex: THIRTY_MINUTES,
     })
 
-    await db.link.update({
-      where: {
-        domain: params.linkId,
-      },
-      data: {
-        clicks: { increment: 1 },
-      },
-    })
+    updateLinkClicks(params.linkId)
 
     return new Response(JSON.stringify(data), { status: 200 })
   } catch (error) {
