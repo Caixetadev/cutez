@@ -23,9 +23,9 @@ export function LinkItem({ data }: LinkItemProps) {
             <div className='flex items-center justify-between'>
               <div className='flex items-center'>
                 <CardTitle>
-                  <Link href={`/${item.domain}`} target='_blank'>
+                  <a href={`/${item.domain}`} target='_blank'>
                     {item.domain}
-                  </Link>
+                  </a>
                 </CardTitle>
 
                 <Copy text={item.domain} />
