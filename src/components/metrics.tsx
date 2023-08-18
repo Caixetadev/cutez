@@ -28,7 +28,7 @@ export async function Metrics() {
                 Avg. Clicks per Link
               </dt>
               <dd className='order-first text-5xl font-semibold tracking-tight text-gray-900'>
-                <span>{avgClicks._avg.clicks?.toFixed(2)}</span>
+                <span>{avgClicks._avg.clicks?.toFixed(2) || 0}</span>
               </dd>
             </div>
             <div className='mx-auto flex max-w-xs flex-col gap-y-4'>
@@ -36,7 +36,7 @@ export async function Metrics() {
                 Links Shortened
               </dt>
               <dd className='order-first text-5xl font-semibold tracking-tight text-gray-900'>
-                <span>{links}</span>
+                <span>{links || 0}</span>
               </dd>
             </div>
             <div className='mx-auto flex max-w-xs flex-col gap-y-4'>
@@ -44,7 +44,7 @@ export async function Metrics() {
                 Users
               </dt>
               <dd className='order-first text-5xl font-semibold tracking-tight text-gray-900'>
-                <span>{users}</span>
+                <span>{users || 0}</span>
               </dd>
             </div>
             <div className='mx-auto flex max-w-xs flex-col gap-y-4'>
@@ -52,7 +52,7 @@ export async function Metrics() {
                 Clicks
               </dt>
               <dd className='order-first text-5xl font-semibold tracking-tight text-gray-900'>
-                <span>{clicks._sum.clicks}</span>
+                <span>{clicks._sum.clicks || 0}</span>
               </dd>
             </div>
           </dl>
