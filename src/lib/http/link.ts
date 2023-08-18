@@ -2,7 +2,7 @@ import { cache } from 'react'
 
 import { db } from '../db'
 
-export const revalidate = 0
+export const dynamic = 'force-dynamic'
 
 export const link = {
   total: cache(() => db.link.count()),
