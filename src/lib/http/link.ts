@@ -1,21 +1,13 @@
-import { cache } from 'react'
-
 import { db } from '../db'
 
-export const dynamic = 'force-dynamic'
-
 export const link = {
-  total: cache(() => db.link.count()),
+  total: db.link.count(),
 
-  clicks: cache(() =>
-    db.link.aggregate({
-      _sum: { clicks: true },
-    })
-  ),
+  clicks: db.link.aggregate({
+    _sum: { clicks: true },
+  }),
 
-  avgClicks: cache(() =>
-    db.link.aggregate({
-      _avg: { clicks: true },
-    })
-  ),
+  avgClicks: db.link.aggregate({
+    _avg: { clicks: true },
+  }),
 }

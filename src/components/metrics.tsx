@@ -1,12 +1,14 @@
 import { link } from '@/lib/http/link'
 import { user } from '@/lib/http/user'
 
+export const dynamic = 'force-dynamic'
+
 export async function Metrics() {
   const [links, clicks, avgClicks, users] = await Promise.all([
-    link.total(),
-    link.clicks(),
-    link.avgClicks(),
-    user.total(),
+    link.total,
+    link.clicks,
+    link.avgClicks,
+    user.total,
   ])
 
   return (
