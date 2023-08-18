@@ -8,7 +8,6 @@ import {
 import { Copy } from '@/components/copy'
 import { LinkOperations } from '@/components/link-operations'
 import { Link as LinkData } from '@prisma/client'
-import Link from 'next/link'
 
 interface LinkItemProps {
   data: LinkData[]
