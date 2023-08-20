@@ -19,6 +19,9 @@ export default async function Dashboard() {
     where: {
       creatorId: user.id,
     },
+    orderBy: {
+      createdAt: 'desc',
+    },
   })
 
   return (

@@ -8,6 +8,7 @@ import {
 import { Copy } from '@/components/copy'
 import { LinkOperations } from '@/components/link-operations'
 import { Link as LinkData } from '@prisma/client'
+import { BarChart, Eye } from 'lucide-react'
 
 interface LinkItemProps {
   data: LinkData[]
@@ -20,7 +21,7 @@ export function LinkItem({ data }: LinkItemProps) {
         <Card key={item.id} className='w-full'>
           <CardHeader className='flex flex-col justify-center'>
             <div className='flex items-center justify-between'>
-              <div className='flex items-center'>
+              <div className='flex items-center space-x-1 sm:space-x-2'>
                 <CardTitle>
                   <a href={`/${item.domain}`} target='_blank'>
                     {item.domain}
@@ -28,6 +29,13 @@ export function LinkItem({ data }: LinkItemProps) {
                 </CardTitle>
 
                 <Copy text={item.domain} />
+                <button className='flex items-center rounded-full bg-gray-100 p-1.5 text-sm text-muted-foreground transition-all duration-75 hover:scale-105 active:scale-95'>
+                  <BarChart className='mr-1 h-[14px] w-[14px] text-muted-foreground transition-all' />
+                  {item.clicks}
+                  <span className='ml-1'>
+                    {item.clicks > 1 ? 'clicks' : 'click'}
+                  </span>
+                </button>
               </div>
               <div>
                 <LinkOperations

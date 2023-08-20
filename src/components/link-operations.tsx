@@ -58,13 +58,14 @@ export function LinkOperations(props: LinkOperationsProps) {
       toast({
         description: 'Link deleted successfully.',
       })
-      router.refresh()
     } catch (error) {
       toast({
         description: 'An error occurred while deleting the link.',
         variant: 'destructive',
       })
     } finally {
+      router.refresh()
+      setShowDeleteAlert(false)
       setIsDeleteLoading(false)
     }
   }

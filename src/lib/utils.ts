@@ -11,5 +11,5 @@ export const getFirstLetters = (name: string | undefined | null) => {
 
   const [firstName, lastName] = name.split(' ', 2)
 
-  return firstName.charAt(0) + lastName.charAt(0)
+  return firstName.charAt(0) + lastName?.charAt(0)
 }

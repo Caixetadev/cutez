@@ -68,7 +68,7 @@ export default async function RootPage() {
           <h2 className='text-balance py-2 text-center text-4xl font-bold tracking-tight text-gray-900'>
             Powerful Features for Streamlined Link Management
           </h2>
-          <p className='max-w-[800px] text-balance text-center text-xl text-muted-foreground'>
+          <p className='mb-6 max-w-[800px] text-balance text-center text-xl text-muted-foreground'>
             This app presents a variety of features tailored to simplify and
             enhance your link management experience. From customizable short
             URLs to detailed analytics and link history.
