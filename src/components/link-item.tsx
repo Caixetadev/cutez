@@ -8,7 +8,10 @@ import {
 import { Copy } from '@/components/copy'
 import { LinkOperations } from '@/components/link-operations'
 import { Link as LinkData } from '@prisma/client'
-import { BarChart, Eye } from 'lucide-react'
+import { BarChart, Eye, QrCode } from 'lucide-react'
+import { ModalQRCode } from './modal-qrcode'
+
+import QRCode from 'react-qr-code'
 
 interface LinkItemProps {
   data: LinkData[]
@@ -29,6 +32,15 @@ export function LinkItem({ data }: LinkItemProps) {
                 </CardTitle>
 
                 <Copy text={item.domain} />
+
+                <ModalQRCode>
+                  <QRCode
+                    id='QRCode'
+                    className='h-32 w-32'
+                    value={`${process.env.NEXT_PUBLIC_URL}/${item.domain}`}
+                  />
+                </ModalQRCode>
+
                 <button className='flex items-center rounded-full bg-gray-100 p-1.5 text-sm text-muted-foreground transition-all duration-75 hover:scale-105 active:scale-95'>
                   <BarChart className='mr-1 h-[14px] w-[14px] text-muted-foreground transition-all' />
                   {item.clicks}
