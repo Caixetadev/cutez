@@ -1,21 +1,23 @@
 'use client'
 
+import { ReactNode } from 'react'
+
+import { QrCode } from 'lucide-react'
+
 import {
   Dialog,
   DialogTrigger,
-  DialogContent,
   DialogTitle,
   DialogFooter,
+  DialogContent,
 } from '@/components/ui/dialog'
-import { QrCode } from 'lucide-react'
-import { DialogHeader } from './ui/dialog'
+import { Button } from '@/components/ui/button'
+import { DialogHeader } from '@/components/ui/dialog'
 
-import { Button } from './ui/button'
-
-export function ModalQRCode({ children }) {
-  const onImageCownload = () => {
+export function ModalQRCode({ children }: { children: ReactNode }) {
+  const onImageDownload = () => {
     const svg = document.getElementById('QRCode')
-    const svgData = new XMLSerializer().serializeToString(svg)
+    const svgData = new XMLSerializer().serializeToString(svg!)
     const canvas = document.createElement('canvas')
     const ctx = canvas.getContext('2d')
     const img = new Image()
@@ -48,7 +50,7 @@ export function ModalQRCode({ children }) {
         </div>
 
         <DialogFooter>
-          <Button size='sm' onClick={onImageCownload}>
+          <Button size='sm' onClick={onImageDownload}>
             Download
           </Button>
         </DialogFooter>
