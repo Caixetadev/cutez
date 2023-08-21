@@ -28,6 +28,7 @@ import {
 
 import { ModalLink } from '@/components/modal-link'
 import { toast } from '@/components/ui/use-toast'
+import { onCopy } from '@/lib/utils'
 
 interface LinkOperationsProps {
   domain: string
@@ -79,7 +80,9 @@ export function LinkOperations(props: LinkOperationsProps) {
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent>
-          <DropdownMenuItem>Copy</DropdownMenuItem>
+          <DropdownMenuItem onClick={() => onCopy(domain)}>
+            Copy
+          </DropdownMenuItem>
           <DropdownMenuSeparator />
           <DropdownMenuItem onClick={() => setShowEdit(true)}>
             Edit
