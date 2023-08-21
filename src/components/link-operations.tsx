@@ -80,7 +80,15 @@ export function LinkOperations(props: LinkOperationsProps) {
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent>
-          <DropdownMenuItem onClick={() => onCopy(domain)}>
+          <DropdownMenuItem
+            onClick={() => {
+              onCopy(domain)
+
+              toast({
+                description: 'Link copied with success',
+              })
+            }}
+          >
             Copy
           </DropdownMenuItem>
           <DropdownMenuSeparator />

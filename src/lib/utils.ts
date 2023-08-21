@@ -1,5 +1,3 @@
-import { toast } from '@/components/ui/use-toast'
-
 import { type ClassValue, clsx } from 'clsx'
 
 import { twMerge } from 'tailwind-merge'
@@ -18,8 +16,4 @@ export const getFirstLetters = (name: string | undefined | null) => {
 
 export const onCopy = (text: string) => {
   navigator.clipboard.writeText(`${process.env.NEXT_PUBLIC_URL}/${text}`)
-
-  toast({
-    description: 'Link copied with success',
-  })
 }
