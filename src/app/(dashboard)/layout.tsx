@@ -4,7 +4,6 @@ import { ReactNode } from 'react'
 import { notFound } from 'next/navigation'
 
 import { Logo } from '@/assets/icons/logo'
-import { Input } from '@/components/ui/input'
 import { UserAccountNav } from '@/components/user-account-nav'
 import { getCurrentUser } from '@/lib/session'
 
@@ -28,14 +27,7 @@ export default async function DashboardLayout({
           <Link href='/'>
             <Logo />
           </Link>
-          <div className='flex'>
-            <Input
-              className='mr-2 w-80'
-              placeholder='Search links'
-              type='email'
-            />
-            <UserAccountNav user={user} />
-          </div>
+          <UserAccountNav user={user} />
         </nav>
       </header>
       <main className='container'>{children}</main>
