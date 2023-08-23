@@ -43,7 +43,9 @@ export default async function RootPage() {
             minus ea recusandae nihil sequi, quae magnam aut possimus repellat.
           </p>
           <div className='flex gap-4'>
-            <Button>Get Started</Button>
+            <Button asChild>
+              <Link href='/login'>Get Started</Link>
+            </Button>
             <Button variant='outline'>
               <Link
                 href='https://github.com/caixetadev'
