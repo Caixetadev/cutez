@@ -39,8 +39,8 @@ export default async function RootPage() {
             Create Links Simply, All in One Place
           </h1>
           <p className='max-w-[42rem] text-balance text-center text-xl text-muted-foreground'>
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Qui eum
-            minus ea recusandae nihil sequi, quae magnam aut possimus repellat.
+            Effortlessly generate shortened links and efficiently manage them
+            all in one centralized dashboard.
           </p>
           <div className='flex gap-4'>
             <Button asChild>
@@ -75,16 +75,15 @@ export default async function RootPage() {
             enhance your link management experience. From customizable short
             URLs to detailed analytics and link history.
           </p>
-          <Image src={'/mockup2.png'} width={1200} height={800} alt='' />
+          <Image src={'/mockup2.png'} width={1100} height={800} alt='' />
           <div className='mx-auto grid w-full max-w-5xl grid-cols-1 place-items-center gap-8 sm:grid-cols-3'>
             <div className='flex flex-col items-center text-center'>
               <div className='mb-4 flex h-8 w-8 items-center justify-center rounded bg-primary'>
                 <LinkIcon className='text-white' />
               </div>
-              <h3 className='mb-2 text-xl font-medium'>Partcipent Invites</h3>
+              <h3 className='mb-2 text-xl font-medium'>Easily create links</h3>
               <p className='text-muted-foreground'>
-                Invite participants to your meeting via an invite link or an
-                invite email.
+                easily create short links and share QR code to anyone
               </p>
             </div>
 
@@ -92,10 +91,10 @@ export default async function RootPage() {
               <div className='mb-4 flex h-8 w-8 items-center justify-center rounded bg-primary'>
                 <Paintbrush2 className='text-white' />
               </div>
-              <h3 className='mb-2 text-xl font-medium'>Partcipent Invites</h3>
+              <h3 className='mb-2 text-xl font-medium'>Dashboard</h3>
               <p className='text-muted-foreground'>
-                Invite participants to your meeting via an invite link or an
-                invite email.
+                The essential information you need, presented simply and
+                clearly.
               </p>
             </div>
 
@@ -103,10 +102,9 @@ export default async function RootPage() {
               <div className='mb-4 flex h-8 w-8 items-center justify-center rounded bg-primary'>
                 <BarChart3 className='text-white' />
               </div>
-              <h3 className='mb-2 text-xl font-medium'>Partcipent Invites</h3>
+              <h3 className='mb-2 text-xl font-medium'>Statistics</h3>
               <p className='max-w-xs text-muted-foreground'>
-                Invite participants to your meeting via an invite link or an
-                invite email.
+                Intuitively visualize how many people clicked on your link
               </p>
             </div>
           </div>
