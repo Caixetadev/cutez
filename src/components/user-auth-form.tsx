@@ -11,6 +11,8 @@ import { GoogleLogo } from '@/assets/icons/google-logo'
 
 export function UserAuthForm() {
   const [isGitHubLoading, setIsGitHubLoading] = useState<boolean>(false)
+  const [isGoogleLoading, setIsGoogleLoading] = useState<boolean>(false)
+  const [isTwitterLoading, setIsTwitterLoading] = useState<boolean>(false)
 
   return (
     <div className='grid gap-6'>
@@ -22,7 +24,7 @@ export function UserAuthForm() {
               setIsGitHubLoading(true)
               signIn('github')
             }}
-            disabled={isGitHubLoading || isGitHubLoading}
+            disabled={isGitHubLoading || isGoogleLoading || isTwitterLoading}
           >
             {isGitHubLoading ? (
               <Loader2 className='h-4 w-4 animate-spin' />
@@ -33,12 +35,12 @@ export function UserAuthForm() {
           <Button
             variant='outline'
             onClick={() => {
-              setIsGitHubLoading(true)
-              signIn('github')
+              setIsGoogleLoading(true)
+              signIn('google')
             }}
-            disabled={isGitHubLoading || isGitHubLoading}
+            disabled={isGitHubLoading || isGoogleLoading || isTwitterLoading}
           >
-            {isGitHubLoading ? (
+            {isGoogleLoading ? (
               <Loader2 className='h-4 w-4 animate-spin' />
             ) : (
               <GoogleLogo />
@@ -47,12 +49,12 @@ export function UserAuthForm() {
           <Button
             variant='outline'
             onClick={() => {
-              setIsGitHubLoading(true)
-              signIn('github')
+              setIsTwitterLoading(true)
+              signIn('twitter')
             }}
-            disabled={isGitHubLoading || isGitHubLoading}
+            disabled={isGitHubLoading || isGoogleLoading || isTwitterLoading}
           >
-            {isGitHubLoading ? (
+            {isTwitterLoading ? (
               <Loader2 className='h-4 w-4 animate-spin' />
             ) : (
               <Twitter className='h-4 w-4' />
