@@ -7,6 +7,7 @@ import { authOptions } from '@/lib/auth'
 import { db } from '@/lib/db'
 import { redirect } from 'next/navigation'
 import { ButtonModal } from './components/button-modal'
+import { RefreshOnFocus } from '@/components/refresh-on-focus'
 
 export default async function Dashboard() {
   const user = await getCurrentUser()
@@ -47,6 +48,8 @@ export default async function Dashboard() {
           </div>
         </div>
       )}
+
+      <RefreshOnFocus />
     </div>
   )
 }
