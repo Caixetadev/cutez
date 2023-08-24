@@ -8,7 +8,7 @@ import {
 import { Copy } from '@/components/copy'
 import { LinkOperations } from '@/components/link-operations'
 import { Link as LinkData } from '@prisma/client'
-import { BarChart, Eye, QrCode } from 'lucide-react'
+import { BarChart } from 'lucide-react'
 import { ModalQRCode } from './modal-qrcode'
 
 import QRCode from 'react-qr-code'
