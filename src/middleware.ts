@@ -1,9 +1,9 @@
 import { getToken } from 'next-auth/jwt'
 import { withAuth } from 'next-auth/middleware'
-import { NextFetchEvent, NextRequest, NextResponse } from 'next/server'
+import { NextRequest, NextResponse } from 'next/server'
 
 export default withAuth(
-  async function middleware(req: NextRequest, ev: NextFetchEvent) {
+  async function middleware(req: NextRequest) {
     const token = await getToken({ req })
     const isAuth = !!token
 
@@ -45,9 +45,6 @@ export default withAuth(
   {
     callbacks: {
       async authorized() {
-        // This is a work-around for handling redirect on auth pages.
-        // We return true here so that the middleware function above
-        // is always called.
         return true
       },
     },

@@ -1,11 +1,12 @@
-import { getCurrentUser } from '@/lib/session'
+import { redirect } from 'next/navigation'
 
 import { Link } from 'lucide-react'
 
-import { LinkItem } from '@/components/link-item'
 import { authOptions } from '@/lib/auth'
+import { getCurrentUser } from '@/lib/session'
 import { db } from '@/lib/db'
-import { redirect } from 'next/navigation'
+
+import { LinkItem } from '@/components/link-item'
 import { ButtonModal } from './components/button-modal'
 
 export default async function Dashboard() {

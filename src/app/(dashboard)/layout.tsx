@@ -1,11 +1,14 @@
 import Link from 'next/link'
 
-import { ReactNode } from 'react'
 import { notFound } from 'next/navigation'
 
-import { Logo } from '@/assets/icons/logo'
+import { ReactNode } from 'react'
+
 import { UserAccountNav } from '@/components/user-account-nav'
+
 import { getCurrentUser } from '@/lib/session'
+
+import { Logo } from '@/assets/icons/logo'
 
 interface DashboardLayoutProps {
   children: ReactNode

@@ -7,6 +7,7 @@ import { VariantProps } from 'class-variance-authority'
 
 import { ModalLink } from '@/components/modal-link'
 import { Button, buttonVariants } from '@/components/ui/button'
+
 interface ButtonModalProps {
   variant?: VariantProps<typeof buttonVariants>['variant']
 }
