@@ -41,6 +41,11 @@ export const metadata: Metadata = {
     images: ['https://cutez.vercel.app/og.png'],
     creator: '@caixetadev',
   },
+  icons: {
+    icon: '/favicon.ico',
+    shortcut: '/favicon-16x16.png',
+    apple: '/apple-touch-icon.png',
+  },
 }
 
 import { Toaster } from '@/components/ui/toaster'

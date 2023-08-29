@@ -22,6 +22,9 @@ export default withAuth(
       '/mockup.jpg',
       '/mockup2.png',
       '/og.png',
+      '/favicon-16x16.png',
+      '/favicon.ico',
+      '/apple-touch-icon.png',
     ]
 
     if (
