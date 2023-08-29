@@ -1,5 +1,7 @@
 import Link from 'next/link'
 
+import type { Metadata } from 'next'
+
 import { notFound } from 'next/navigation'
 
 import { ReactNode } from 'react'
@@ -12,6 +14,10 @@ import { Logo } from '@/assets/icons/logo'
 
 interface DashboardLayoutProps {
   children: ReactNode
+}
+
+export const metadata: Metadata = {
+  title: 'Dashboard',
 }
 
 export default async function DashboardLayout({

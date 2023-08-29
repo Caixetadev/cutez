@@ -1,5 +1,7 @@
 import Link from 'next/link'
 
+import type { Metadata } from 'next'
+
 import { ChevronLeft } from 'lucide-react'
 
 import { Logo } from '@/assets/icons/logo'
@@ -12,6 +14,10 @@ import {
   CardTitle,
 } from '@/components/ui/card'
 import { UserAuthForm } from '@/components/user-auth-form'
+
+export const metadata: Metadata = {
+  title: 'Login',
+}
 
 export default function LoginPage() {
   return (

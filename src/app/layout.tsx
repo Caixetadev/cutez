@@ -5,7 +5,10 @@ import { Inter } from 'next/font/google'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Cutez | Quick and Easy URL Shortening',
+  title: {
+    default: 'Cutez | Quick and Easy URL Shortening',
+    template: '%s | Cutez',
+  },
   description:
     'Cutez: Your link shortening companion, built by the community, for the community. Embrace the power of open source as you create elegant short links and contribute to a tool that empowers us all.',
   keywords: [
