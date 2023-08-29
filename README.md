@@ -1,12 +1,12 @@
-<h1 align="center">Short</h1>
+<h1 align="center">Cutez</h1>
 
 <p align="center">
   <i align="center">Experience the magic of instantly generated ready-to-use short links 🚀</i>
 </p>
 
 <h4 align="center">
-  <a href="https://github.com/caixetadev/short/graphs/contributors">
-    <img src="https://img.shields.io/github/contributors-anon/caixetadev/short?color=yellow&style=flat-square" alt="contributers">
+  <a href="https://github.com/caixetadev/cutez/graphs/contributors">
+    <img src="https://img.shields.io/github/contributors-anon/caixetadev/cutez?color=yellow&style=flat-square" alt="contributers">
   </a>
   <a href="https://opensource.org/licenses/MIT">
     <img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="license">
@@ -20,7 +20,7 @@
 
 ## Introduction
 
-Welcome to our open-source link shortening application! Designed as a platform for practicing and showcasing the latest features of Next.js 13, our app offers a unique opportunity to explore cutting-edge web development techniques. With a focus on simplicity, efficiency, and innovation, we invite you to dive into the world of link shortening while experiencing the power of Next.js 13. Join us on this journey of learning and discovery as we harness the potential of modern web technologies to create a seamless and dynamic link shortener.
+Welcome to our open-source link shortening application! Designed as a platform for practicing and showcasing the latest features of Next.js 13. With a focus on simplicity, efficiency, and innovation, we invite you to dive into the world of link shortening while experiencing the power of Next.js 13. Join us on this journey of learning and discovery as we harness the potential of modern web technologies to create a seamless and dynamic link shortener.
 
 ## Tools
 
@@ -28,13 +28,13 @@ Welcome to our open-source link shortening application! Designed as a platform f
 - [<img src="https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white" />](https://www.typescriptlang.org/)
 - [<img src="https://img.shields.io/badge/Prisma-3982CE?style=for-the-badge&logo=Prisma&logoColor=white" />](https://www.prisma.io/)
 - [<img src="https://img.shields.io/badge/Supabase-181818?style=for-the-badge&logo=supabase&logoColor=white" />](https://supabase.com/)
-- [<img src="https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white" />](https://tailwindcss.com/).
-- **Auth**: [NextAuth.js](https://next-auth.js.org/).
-- **Typescript Schema Validation**: [Zod](https://zod.dev/).
+- [<img src="https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white" />](https://tailwindcss.com/)
+- [<img src="https://img.shields.io/badge/Zod-3E67B1?logo=zod" />](https://zod.dev/)
+- **Auth**: [NextAuth.js](https://next-auth.js.org/)
 
 ## Usage 
 
-To start using our link shortening service, you can begin right away with our hosted version. Visit [short](https://short-rust.vercel.app) and navigate to the login page. 
+To start using our link shortening service, you can begin right away with our hosted version. Visit [cutez](https://cutez.vercel.app) and navigate to the login page. 
 
 ## Development
 
@@ -63,7 +63,7 @@ To setup a local development environment the following steps can be followed:
 
 1. Clone the repository and install dependencies:
 ```shell
-git clone https://github.com/Caixetadev/short.git && cd short && npm install
+git clone https://github.com/Caixetadev/cutez.git && cd cutez && npm install
 ```
 
 2. Run the setup script, which takes care of installing dependencies, building packages and setting up the workspace:
@@ -90,4 +90,4 @@ Contributions are welcome! If you want to contribute to the project, follow the 
 [//]: contributor-faces
 
 ## License
-Licensed under the [MIT license](https://github.com/caixetadev/short/blob/main/LICENSE.md).
+Licensed under the [MIT license](https://github.com/caixetadev/cutez/blob/main/LICENSE.md).
