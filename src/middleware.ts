@@ -15,7 +15,14 @@ export default withAuth(
       return NextResponse.redirect(new URL('/dashboard', req.url))
     }
 
-    const pages = ['/login', '/dashboard', '/', '/mockup.jpg', '/mockup2.png']
+    const pages = [
+      '/login',
+      '/dashboard',
+      '/',
+      '/mockup.jpg',
+      '/mockup2.png',
+      '/og.png',
+    ]
 
     if (
       !pages.includes(req.nextUrl.pathname) &&
