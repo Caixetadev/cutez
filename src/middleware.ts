@@ -30,11 +30,12 @@ export default withAuth(
             ''
           )}`
         )
-        const data = await response.json()
 
-        if (!response.ok || data.status === 404 || !data?.url) {
+        if (response.status === 404) {
           return NextResponse.redirect(req.nextUrl.origin)
         }
+
+        const data = await response.json()
 
         return NextResponse.redirect(new URL(data.url))
       } catch (error) {
