@@ -43,14 +43,14 @@ export default function LoginPage() {
         <CardContent className='flex flex-col space-y-4'>
           <UserAuthForm />
 
-          <p className='px-8 text-center text-sm text-muted-foreground'>
+          {/* <p className='px-8 text-center text-sm text-muted-foreground'>
             <Link
               href='/register'
               className='hover:text-brand underline underline-offset-4'
             >
               Don&apos;t have an account? Sign Up
             </Link>
-          </p>
+          </p> */}
         </CardContent>
       </Card>
     </div>
