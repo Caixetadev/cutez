@@ -74,10 +74,9 @@ export function LinkOperations(props: LinkOperationsProps) {
   return (
     <>
       <DropdownMenu>
-        <DropdownMenuTrigger asChild>
-          <Button variant='outline' size='icon'>
-            <MoreVertical className='h-4 w-4' />
-          </Button>
+        <DropdownMenuTrigger className='flex h-8 w-8 items-center justify-center rounded-md border transition-colors hover:bg-muted'>
+          <MoreVertical className='h-4 w-4' />
+          <span className='sr-only'>Open</span>
         </DropdownMenuTrigger>
         <DropdownMenuContent>
           <DropdownMenuItem

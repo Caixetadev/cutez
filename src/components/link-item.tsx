@@ -23,10 +23,14 @@ export function LinkItem({ data }: LinkItemProps) {
       {data.map((item) => (
         <Card key={item.id} className='w-full'>
           <CardHeader className='flex flex-col justify-center'>
-            <div className='flex items-center justify-between'>
-              <div className='flex items-center space-x-1 sm:space-x-2'>
+            <div className='flex flex-wrap items-center justify-between'>
+              <div className='flex flex-wrap items-center space-x-1 sm:space-x-2'>
                 <CardTitle>
-                  <a href={`/${item.domain}`} target='_blank'>
+                  <a
+                    href={`/${item.domain}`}
+                    className='text-lg sm:text-[26px]'
+                    target='_blank'
+                  >
                     {item.domain}
                   </a>
                 </CardTitle>
@@ -44,7 +48,7 @@ export function LinkItem({ data }: LinkItemProps) {
                 <button className='flex items-center rounded-full bg-gray-100 p-1.5 text-sm text-muted-foreground transition-all duration-75 hover:scale-105 active:scale-95'>
                   <BarChart className='mr-1 h-[14px] w-[14px] text-muted-foreground transition-all' />
                   {item.clicks}
-                  <span className='ml-1'>
+                  <span className='ml-1 hidden sm:block'>
                     {item.clicks > 1 ? 'clicks' : 'click'}
                   </span>
                 </button>

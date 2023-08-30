@@ -27,7 +27,7 @@ export default async function Dashboard() {
 
   return (
     <div className='mb-16 flex flex-col gap-8'>
-      <div className='mt-8 flex items-center justify-between'>
+      <div className='mt-8 flex flex-wrap items-center justify-between'>
         <h1 className='text-3xl font-bold md:text-4xl'>Dashboard</h1>
         <ButtonModal />
       </div>
