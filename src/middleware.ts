@@ -14,9 +14,13 @@ export default withAuth(
     if (req.nextUrl.pathname.startsWith('/login') && isAuth) {
       return NextResponse.redirect(new URL('/dashboard', req.url))
     }
+    if (req.nextUrl.pathname.startsWith('/register') && isAuth) {
+      return NextResponse.redirect(new URL('/dashboard', req.url))
+    }
 
     const pages = [
       '/login',
+      '/register',
       '/dashboard',
       '/',
       '/mockup.jpg',
@@ -63,5 +67,5 @@ export default withAuth(
 )
 
 export const config = {
-  matcher: ['/dashboard', '/login', '/:slug*'],
+  matcher: ['/dashboard', '/login', '/register' ,'/:slug*'],
 }
