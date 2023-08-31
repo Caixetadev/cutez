@@ -12,15 +12,17 @@ import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Navbar } from '@/components/navbar'
 import { Footer } from '@/components/footer'
+import { getCurrentUser } from '@/lib/session'
 import { Metrics } from '@/components/metrics'
 
 export const dynamic = 'force-dynamic'
 
 export default async function RootPage() {
+  const user = await getCurrentUser()
   return (
     <>
       <Navbar />
-      <section className='container flex min-h-screen flex-col items-center justify-center gap-24 py-24'>
+      <section className='container flex flex-col items-center justify-center min-h-screen gap-24 py-24'>
         <div className='flex flex-col items-center gap-4'>
           <Badge
             variant='secondary'
@@ -33,9 +35,9 @@ export default async function RootPage() {
             >
               Find the project on Github
             </Link>
-            <ChevronRight className='h-4 w-4' />
+            <ChevronRight className='w-4 h-4' />
           </Badge>
-          <h1 className='text-balance text-center text-5xl font-bold text-gray-900'>
+          <h1 className='text-5xl font-bold text-center text-gray-900 text-balance'>
             Create Links Simply, All in One Place
           </h1>
           <p className='max-w-[42rem] text-balance text-center text-xl text-muted-foreground'>
@@ -43,9 +45,16 @@ export default async function RootPage() {
             all in one centralized dashboard.
           </p>
           <div className='flex gap-4'>
-            <Button asChild>
-              <Link href='/login'>Get Started</Link>
-            </Button>
+            {user ? (
+              <Button asChild>
+                <Link href='/dashboard'>Dashboard</Link>
+              </Button>
+            ) : (
+              <Button asChild>
+                <Link href='/login'>Get Started</Link>
+              </Button>
+            )}
+
             <Button variant='outline'>
               <Link
                 href='https://github.com/caixetadev'
@@ -57,7 +66,7 @@ export default async function RootPage() {
             </Button>
           </div>
         </div>
-        <div className='relative flex w-full max-w-full justify-center'>
+        <div className='relative flex justify-center w-full max-w-full'>
           <Image priority width={1000} height={600} src='/mockup.jpg' alt='' />
         </div>
       </section>
@@ -67,7 +76,7 @@ export default async function RootPage() {
       <section className='container py-24'>
         <div className='flex flex-col items-center gap-4 py-16'>
           <Badge variant='secondary'>Features</Badge>
-          <h2 className='text-balance py-2 text-center text-4xl font-bold tracking-tight text-gray-900'>
+          <h2 className='py-2 text-4xl font-bold tracking-tight text-center text-gray-900 text-balance'>
             Powerful Features for Streamlined Link Management
           </h2>
           <p className='mb-6 max-w-[800px] text-balance text-center text-xl text-muted-foreground'>
@@ -76,9 +85,9 @@ export default async function RootPage() {
             URLs to detailed analytics and link history.
           </p>
           <Image src={'/mockup2.png'} width={1100} height={800} alt='' />
-          <div className='mx-auto grid w-full max-w-5xl grid-cols-1 place-items-center gap-8 sm:grid-cols-3'>
+          <div className='grid w-full max-w-5xl grid-cols-1 gap-8 mx-auto place-items-center sm:grid-cols-3'>
             <div className='flex flex-col items-center text-center'>
-              <div className='mb-4 flex h-8 w-8 items-center justify-center rounded bg-primary'>
+              <div className='flex items-center justify-center w-8 h-8 mb-4 rounded bg-primary'>
                 <LinkIcon className='text-white' />
               </div>
               <h3 className='mb-2 text-xl font-medium'>Easily create links</h3>
@@ -88,7 +97,7 @@ export default async function RootPage() {
             </div>
 
             <div className='flex flex-col items-center text-center'>
-              <div className='mb-4 flex h-8 w-8 items-center justify-center rounded bg-primary'>
+              <div className='flex items-center justify-center w-8 h-8 mb-4 rounded bg-primary'>
                 <Paintbrush2 className='text-white' />
               </div>
               <h3 className='mb-2 text-xl font-medium'>Dashboard</h3>
@@ -99,7 +108,7 @@ export default async function RootPage() {
             </div>
 
             <div className='flex flex-col items-center text-center'>
-              <div className='mb-4 flex h-8 w-8 items-center justify-center rounded bg-primary'>
+              <div className='flex items-center justify-center w-8 h-8 mb-4 rounded bg-primary'>
                 <BarChart3 className='text-white' />
               </div>
               <h3 className='mb-2 text-xl font-medium'>Statistics</h3>
