@@ -85,9 +85,9 @@ Contributions are welcome! If you want to contribute to the project, follow the 
 ## Contributers
 
 [//]: contributor-faces
-<a href="https://github.com/caixetadev"><img src="https://avatars.githubusercontent.com/u/87894998?v=4" title="caixetadev" width="50" height="50"></a>
-
-[//]: contributor-faces
+<a href="https://github.com/caixetadev/cutez/graphs/contributors">
+  <img src="https://contributors-img.web.app/image?repo=caixetadev/cutez&max=500" alt="Lista de contribuidores"/>
+</a>
 
 ## License
 Licensed under the [MIT license](https://github.com/caixetadev/cutez/blob/main/LICENSE.md).
