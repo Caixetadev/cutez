@@ -21,36 +21,25 @@ export const metadata: Metadata = {
 
 export default function LoginPage() {
   return (
-    <div className='container flex h-[calc(100vh_-_40px)] flex-col items-center justify-center'>
-      <Button asChild variant='ghost'>
-        <Link href='/' className='absolute left-4 top-4 md:left-8 md:top-8'>
-          <>
-            <ChevronLeft className='w-4 h-4 mr-2' />
-            Back
-          </>
-        </Link>
-      </Button>
+    <Card className='w-[90vw] max-w-[400px]'>
+      <CardHeader className='flex flex-col justify-center space-y-2 text-center'>
+        <Logo className='mx-auto' />
+        <CardTitle>Welcome Back</CardTitle>
+        <CardDescription>Choose an option below to Login</CardDescription>
+      </CardHeader>
 
-      <Card className='w-[90vw] max-w-[400px]'>
-        <CardHeader className='flex flex-col justify-center space-y-2 text-center'>
-          <Logo className='mx-auto' />
-          <CardTitle>Welcome Back</CardTitle>
-          <CardDescription>Choose an option below to Login</CardDescription>
-        </CardHeader>
+      <CardContent className='flex flex-col space-y-4'>
+        <UserAuthForm />
 
-        <CardContent className='flex flex-col space-y-4'>
-          <UserAuthForm />
-
-          <p className='px-8 text-sm text-center text-muted-foreground'>
-            <Link
-              href='/register'
-              className='underline hover:text-brand underline-offset-4'
-            >
-              Don&apos;t have an account? Sign Up
-            </Link>
-          </p>
-        </CardContent>
-      </Card>
-    </div>
+        <p className='px-8 text-center text-sm text-muted-foreground'>
+          <Link
+            href='/register'
+            className='hover:text-brand underline underline-offset-4'
+          >
+            Don&apos;t have an account? Sign Up
+          </Link>
+        </p>
+      </CardContent>
+    </Card>
   )
 }
