@@ -16,27 +16,26 @@ import {
 import { UserAuthForm } from '@/components/user-auth-form'
 
 export const metadata: Metadata = {
-  title: 'Login',
+  title: 'Register',
 }
 
-export default function LoginPage() {
+export default function SignupPage() {
   return (
     <Card className='w-[90vw] max-w-[400px]'>
       <CardHeader className='flex flex-col justify-center space-y-2 text-center'>
         <Logo className='mx-auto' />
-        <CardTitle>Welcome Back</CardTitle>
-        <CardDescription>Choose an option below to Login</CardDescription>
+        <CardTitle>Welcome to Cutez</CardTitle>
+        <CardDescription>Choose an option below to get started</CardDescription>
       </CardHeader>
 
       <CardContent className='flex flex-col space-y-4'>
         <UserAuthForm />
-
         <p className='px-8 text-center text-sm text-muted-foreground'>
           <Link
-            href='/register'
+            href='/login'
             className='hover:text-brand underline underline-offset-4'
           >
-            Don&apos;t have an account? Sign Up
+            Have an account? Login
           </Link>
         </p>
       </CardContent>
