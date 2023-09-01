@@ -11,7 +11,9 @@ export async function Navbar() {
   return (
     <header className='container'>
       <div className='flex h-16 flex-wrap items-center justify-between py-4'>
-        <Logo />
+        <Link href='/'>
+          <Logo />
+        </Link>
         {user ? (
           <UserAccountNav user={user} />
         ) : (
