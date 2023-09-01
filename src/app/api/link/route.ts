@@ -1,7 +1,9 @@
+import { getServerSession } from 'next-auth'
+
 import { authOptions } from '@/lib/auth'
 import { db } from '@/lib/db'
 import { LinkSchema } from '@/lib/validations/link'
-import { getServerSession } from 'next-auth'
+
 import { z } from 'zod'
 
 export async function POST(req: Request) {

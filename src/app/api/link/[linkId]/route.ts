@@ -1,3 +1,7 @@
+import { NextRequest } from 'next/server'
+
+import { getServerSession } from 'next-auth'
+
 import { authOptions } from '@/lib/auth'
 import { db } from '@/lib/db'
 import { rateLimit } from '@/lib/rate-limit'
@@ -7,8 +11,6 @@ import { linkPatchSchema } from '@/lib/validations/link'
 
 import { ipAddress } from '@vercel/edge'
 
-import { getServerSession } from 'next-auth'
-import { NextRequest } from 'next/server'
 import { z } from 'zod'
 
 const routeContextSchema = z.object({
@@ -18,7 +20,7 @@ const routeContextSchema = z.object({
 })
 
 export async function DELETE(
-  req: NextRequest,
+  _: NextRequest,
   context: z.infer<typeof routeContextSchema>
 ) {
   try {

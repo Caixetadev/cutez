@@ -2,10 +2,8 @@ import Link from 'next/link'
 
 import type { Metadata } from 'next'
 
-import { ChevronLeft } from 'lucide-react'
-
 import { Logo } from '@/assets/icons/logo'
-import { Button } from '@/components/ui/button'
+
 import {
   Card,
   CardContent,
