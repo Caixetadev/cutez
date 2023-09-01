@@ -32,9 +32,9 @@ Welcome to our open-source link shortening application! Designed as a platform f
 - [<img src="https://img.shields.io/badge/Zod-3E67B1?logo=zod" />](https://zod.dev/)
 - **Auth**: [NextAuth.js](https://next-auth.js.org/)
 
-## Usage 
+## Usage
 
-To start using our link shortening service, you can begin right away with our hosted version. Visit [cutez](https://cutez.vercel.app) and navigate to the login page. 
+To start using our link shortening service, you can begin right away with our hosted version. Visit [cutez](https://cutez.vercel.app) and navigate to the login page.
 
 ## Development
 
@@ -62,16 +62,19 @@ To setup a local development environment the following steps can be followed:
 ###
 
 1. Clone the repository and install dependencies:
+
 ```shell
 git clone https://github.com/Caixetadev/cutez.git && cd cutez && npm install
 ```
 
 2. Run the setup script, which takes care of installing dependencies, building packages and setting up the workspace:
+
 ```shell
 npm run dev
 ```
 
 <a name="contributing_anchor"></a>
+
 ## Contributing
 
 Contributions are welcome! If you want to contribute to the project, follow the instructions below:
@@ -85,9 +88,11 @@ Contributions are welcome! If you want to contribute to the project, follow the 
 ## Contributers
 
 [//]: contributor-faces
+
 <a href="https://github.com/caixetadev/cutez/graphs/contributors">
   <img src="https://contributors-img.web.app/image?repo=caixetadev/cutez&max=500" alt="Lista de contribuidores"/>
 </a>
 
 ## License
+
 Licensed under the [MIT license](https://github.com/caixetadev/cutez/blob/main/LICENSE.md).
