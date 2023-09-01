@@ -29,6 +29,8 @@ export default withAuth(
       '/favicon-16x16.png',
       '/favicon.ico',
       '/apple-touch-icon.png',
+      '/sitemap.xml',
+      '/robots.txt'
     ]
 
     if (
