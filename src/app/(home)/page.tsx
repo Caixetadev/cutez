@@ -12,8 +12,9 @@ import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Navbar } from '@/components/navbar'
 import { Footer } from '@/components/footer'
-import { getCurrentUser } from '@/lib/session'
 import { Metrics } from '@/components/metrics'
+
+import { getCurrentUser } from '@/lib/session'
 
 export const dynamic = 'force-dynamic'
 
