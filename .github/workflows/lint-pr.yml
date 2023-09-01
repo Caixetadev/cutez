@@ -1,13 +1,13 @@
 name: lint-pr
 
 on:
-  pull_request:
-    # types:
-    #   - opened
-    #   - edited
-    #   - synchronize
+  pull_request_target:
+    types:
+      - opened
+      - edited
+      - synchronize
     branches:
-      - '**'
+      - main
 
 jobs:
   main:
