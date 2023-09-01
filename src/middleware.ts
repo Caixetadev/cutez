@@ -47,6 +47,10 @@ export default withAuth(
           )}`
         )
 
+        if (response.status === 429) {
+          return new NextResponse("Rate Limit")
+        }
+
         if (response.status === 404) {
           return NextResponse.redirect(req.nextUrl.origin)
         }
@@ -55,7 +59,7 @@ export default withAuth(
 
         return NextResponse.redirect(new URL(data.url))
       } catch (error) {
-        return new NextResponse('Rate limit')
+        return new NextResponse('Internal Server Erro', {status: 500})
       }
     }
   },
