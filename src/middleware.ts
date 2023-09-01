@@ -30,7 +30,7 @@ export default withAuth(
       '/favicon.ico',
       '/apple-touch-icon.png',
       '/sitemap.xml',
-      '/robots.txt'
+      '/robots.txt',
     ]
 
     if (
