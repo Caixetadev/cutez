@@ -27,10 +27,10 @@ export default async function RootPage() {
         <div className='flex flex-col items-center gap-4'>
           <Badge
             variant='secondary'
-            className='flex items-center justify-center '
+            className='flex items-center justify-center'
           >
             <Link
-              href='http://github.com/caixetadev'
+              href='https://github.com/Caixetadev/cutez'
               target='_blank'
               rel='noopener noreferrer'
             >
@@ -58,7 +58,7 @@ export default async function RootPage() {
 
             <Button variant='outline'>
               <Link
-                href='https://github.com/caixetadev'
+                href='https://github.com/Caixetadev/cutez'
                 target='_blank'
                 rel='noopener noreferrer'
               >
