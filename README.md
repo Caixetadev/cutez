@@ -90,7 +90,7 @@ Contributions are welcome! If you want to contribute to the project, follow the 
 [//]: contributor-faces
 
 <a href="https://github.com/caixetadev/cutez/graphs/contributors">
-  <img src="https://contributors-img.web.app/image?repo=caixetadev/cutez&max=500" alt="Lista de contribuidores"/>
+  <img src="https://contrib.rocks/image?repo=caixetadev/cutez" />
 </a>
 
 ## License
