@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   description:
     'Cutez: Your link shortening companion, built by the community, for the community. Embrace the power of open source as you create elegant short links and contribute to a tool that empowers us all.',
   verification: {
-    google: "Jez4u6OnGwqBtt0nPf57OpZYhhGTu3F8s36lWdTcA5Q"
+    google: 'Jez4u6OnGwqBtt0nPf57OpZYhhGTu3F8s36lWdTcA5Q',
   },
   keywords: [
     'URL shortener',

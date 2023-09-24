@@ -1,6 +1,8 @@
 import { cache } from 'react'
 import { db } from '../db'
 
+export const revalidate = 3600
+
 export const link = {
   total: cache(() => db.link.count()),
 

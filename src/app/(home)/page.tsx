@@ -16,8 +16,6 @@ import { Metrics } from '@/components/metrics'
 
 import { getCurrentUser } from '@/lib/session'
 
-export const dynamic = 'force-dynamic'
-
 export default async function RootPage() {
   const user = await getCurrentUser()
   return (
@@ -41,7 +39,7 @@ export default async function RootPage() {
           <h1 className='text-balance text-center text-5xl font-bold text-gray-900'>
             Create Links Simply, All in One Place
           </h1>
-          <p className='max-w-[42rem] text-balance text-center text-xl text-muted-foreground'>
+          <p className='text-balance max-w-[42rem] text-center text-xl text-muted-foreground'>
             Effortlessly generate shortened links and efficiently manage them
             all in one centralized dashboard.
           </p>
@@ -80,7 +78,7 @@ export default async function RootPage() {
           <h2 className='text-balance py-2 text-center text-4xl font-bold tracking-tight text-gray-900'>
             Powerful Features for Streamlined Link Management
           </h2>
-          <p className='mb-6 max-w-[800px] text-balance text-center text-xl text-muted-foreground'>
+          <p className='text-balance mb-6 max-w-[800px] text-center text-xl text-muted-foreground'>
             This app presents a variety of features tailored to simplify and
             enhance your link management experience. From customizable short
             URLs to detailed analytics and link history.

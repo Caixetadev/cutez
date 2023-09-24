@@ -109,7 +109,7 @@ export async function GET(
     const { success } = await rateLimit(ip)
 
     if (!success) {
-      return new Response("Rate Limit", { status: 429 })
+      return new Response('Rate Limit', { status: 429 })
     }
 
     const cachedData: any = await redis.get(`link:${params.linkId}`)
