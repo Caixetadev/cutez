@@ -1,3 +1,4 @@
+'use client'
 import {
   Card,
   CardHeader,
@@ -8,16 +9,37 @@ import {
 import { Copy } from '@/components/copy'
 import { LinkOperations } from '@/components/link-operations'
 import { Link as LinkData } from '@prisma/client'
-import { BarChart } from 'lucide-react'
+import { BarChart, Eye, EyeOff } from 'lucide-react'
 import { ModalQRCode } from './modal-qrcode'
 
 import QRCode from 'react-qr-code'
+import { cn } from '@/lib/utils'
+import { useState } from 'react'
 
 interface LinkItemProps {
   data: LinkData[]
 }
 
 export function LinkItem({ data }: LinkItemProps) {
+  const [showLinks, setShowLinks] = useState<{ [key: string]: boolean }>({})
+
+  const toggleLinkVisibility = (domain: string) => {
+    setShowLinks((prev) => ({
+      ...prev,
+      [domain]: !prev[domain],
+    }))
+    localStorage.setItem(domain, JSON.stringify(!showLinks[domain]))
+  }
+
+  const retrieveLinkVisibilityState = (domain: string) => {
+    const storedLinks = localStorage.getItem(domain)
+    if (storedLinks) {
+      return JSON.parse(storedLinks)
+    }
+
+    return false
+  }
+
   return (
     <div className='flex flex-col gap-4'>
       {data.map((item) => (
@@ -36,6 +58,16 @@ export function LinkItem({ data }: LinkItemProps) {
                 </CardTitle>
 
                 <Copy text={item.domain} />
+                <div
+                  onClick={() => toggleLinkVisibility(item.domain)}
+                  className='rounded-full bg-gray-100 p-1.5 transition-all duration-75 hover:scale-105 active:scale-95'
+                >
+                  {retrieveLinkVisibilityState(item.domain) ? (
+                    <EyeOff className='h-[16px] w-[16px] text-muted-foreground transition-all' />
+                  ) : (
+                    <Eye className='h-[16px] w-[16px] text-muted-foreground transition-all' />
+                  )}
+                </div>
 
                 <ModalQRCode>
                   <QRCode
@@ -62,7 +94,11 @@ export function LinkItem({ data }: LinkItemProps) {
                 />
               </div>
             </div>
-            <CardDescription className='max-w-lg truncate'>
+            <CardDescription
+              className={cn('max-w-lg truncate', {
+                'blur-sm': retrieveLinkVisibilityState(item.domain),
+              })}
+            >
               {item.url}
             </CardDescription>
           </CardHeader>
