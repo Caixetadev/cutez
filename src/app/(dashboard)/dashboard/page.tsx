@@ -25,6 +25,25 @@ export default async function Dashboard() {
     },
   })
 
+  const notExistsLinks = !links.length
+
+  if (notExistsLinks) {
+    return (
+      <div className='flex min-h-[400px] flex-col items-center justify-center rounded-md border border-dashed p-8 text-center animate-in fade-in-50'>
+        <div className='mx-auto flex max-w-[420px] flex-col items-center justify-center text-center'>
+          <div className='flex h-20 w-20 items-center justify-center rounded-full bg-muted'>
+            <Link className='h-10 w-10' />
+          </div>
+          <h2 className='mt-6 text-xl font-semibold'>No posts created</h2>
+          <p className='mb-8 mt-2 text-center text-sm font-normal leading-6 text-muted-foreground'>
+            You don&apos;t have any links yet. Start creating content.
+          </p>
+          <ButtonModal variant='outline' />
+        </div>
+      </div>
+    )
+  }
+
   return (
     <div className='mb-16 flex flex-col gap-8'>
       <div className='mt-8 flex flex-wrap items-center justify-between'>
@@ -32,22 +51,7 @@ export default async function Dashboard() {
         <ButtonModal />
       </div>
 
-      {links.length ? (
-        <LinkItem data={links} />
-      ) : (
-        <div className='flex min-h-[400px] flex-col items-center justify-center rounded-md border border-dashed p-8 text-center animate-in fade-in-50'>
-          <div className='mx-auto flex max-w-[420px] flex-col items-center justify-center text-center'>
-            <div className='flex h-20 w-20 items-center justify-center rounded-full bg-muted'>
-              <Link className='h-10 w-10' />
-            </div>
-            <h2 className='mt-6 text-xl font-semibold'>No posts created</h2>
-            <p className='mb-8 mt-2 text-center text-sm font-normal leading-6 text-muted-foreground'>
-              You don&apos;t have any links yet. Start creating content.
-            </p>
-            <ButtonModal variant='outline' />
-          </div>
-        </div>
-      )}
+      <LinkItem data={links} />
     </div>
   )
 }
