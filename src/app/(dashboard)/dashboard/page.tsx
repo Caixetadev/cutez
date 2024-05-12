@@ -8,24 +8,83 @@ import { db } from '@/lib/db'
 
 import { LinkItem } from '@/components/link-item'
 import { ButtonModal } from './components/button-modal'
+import {
+  PaginationContent,
+  PaginationEllipsis,
+  PaginationItem,
+  PaginationLink,
+  PaginationNext,
+  PaginationPrevious,
+} from '@/components/ui/pagination'
+import { cn } from '@/lib/utils'
+import { getPageNumbers } from '@/utils/pagination'
 
-export default async function Dashboard() {
-  const user = await getCurrentUser()
+export type PageProps = {
+  params: { [key: string]: string | string[] | undefined }
+  searchParams?: { [key: string]: string | string[] | undefined }
+}
 
-  if (!user) {
-    redirect(authOptions?.pages?.signIn || '/login')
-  }
+const PAGE_SIZE = 10
 
+type FechLinksProps = {
+  take: number
+  skip: number
+  userID: string
+}
+
+async function fetchLink({
+  take = PAGE_SIZE,
+  skip = 0,
+  userID,
+}: FechLinksProps) {
   const links = await db.link.findMany({
+    take,
+    skip,
     where: {
-      creatorId: user.id,
+      creatorId: userID,
     },
     orderBy: {
       clicks: 'desc',
     },
   })
 
-  const notExistsLinks = !links.length
+  const total = await db.link.count()
+
+  return {
+    data: links,
+    metadata: {
+      hasNextPage: skip + take < total,
+      totalPages: Math.ceil(total / take),
+    },
+  }
+}
+
+export default async function Dashboard(props: PageProps) {
+  const user = await getCurrentUser()
+
+  if (!user) {
+    redirect(authOptions?.pages?.signIn || '/login')
+  }
+
+  const page = props?.searchParams?.page || 1
+
+  const pageNumber = Number(page)
+
+  const take = PAGE_SIZE
+  const skip = (pageNumber - 1) * take
+
+  const { data, metadata } = await fetchLink({ take, skip, userID: user.id })
+
+  const totalPages = metadata.totalPages
+
+  const currentPage = Math.min(Math.max(Number(page), 1), totalPages)
+
+  const { pages, showRightEllipsis, showLeftEllipsis } = getPageNumbers({
+    totalPages,
+    currentPage,
+  })
+
+  const notExistsLinks = !data.length
 
   if (notExistsLinks) {
     return (
@@ -44,6 +103,19 @@ export default async function Dashboard() {
     )
   }
 
+  const renderPaginationItems = () => {
+    return pages.map((pageNumber) => (
+      <PaginationItem key={pageNumber}>
+        <PaginationLink
+          href={`?page=${pageNumber}`}
+          isActive={pageNumber === currentPage}
+        >
+          {pageNumber}
+        </PaginationLink>
+      </PaginationItem>
+    ))
+  }
+
   return (
     <div className='mb-16 flex flex-col gap-8'>
       <div className='mt-8 flex flex-wrap items-center justify-between'>
@@ -51,7 +123,62 @@ export default async function Dashboard() {
         <ButtonModal />
       </div>
 
-      <LinkItem data={links} />
+      <LinkItem data={data} />
+
+      <PaginationContent className='self-center'>
+        <PaginationItem>
+          <PaginationPrevious
+            href='#'
+            aria-disabled={currentPage === 1}
+            className={cn({
+              'pointer-events-none': currentPage === 1,
+              'opacity-50': currentPage === 1,
+            })}
+          />
+        </PaginationItem>
+        {showLeftEllipsis && (
+          <>
+            <PaginationItem>
+              <PaginationLink
+                href={`?page=1`}
+                isActive={pageNumber === currentPage}
+              >
+                1
+              </PaginationLink>
+            </PaginationItem>
+            <PaginationItem>
+              <PaginationEllipsis />
+            </PaginationItem>
+          </>
+        )}
+        {renderPaginationItems()}
+        {showRightEllipsis && (
+          <>
+            <PaginationItem>
+              <PaginationEllipsis />
+            </PaginationItem>
+
+            <PaginationItem>
+              <PaginationLink
+                href={`?page=${totalPages}`}
+                isActive={pageNumber === currentPage}
+              >
+                {totalPages}
+              </PaginationLink>
+            </PaginationItem>
+          </>
+        )}
+        <PaginationItem>
+          <PaginationNext
+            href={`?page=${currentPage + 1}`}
+            aria-disabled={currentPage === totalPages}
+            className={cn({
+              'pointer-events-none': currentPage === totalPages,
+              'opacity-50': currentPage === totalPages,
+            })}
+          />
+        </PaginationItem>
+      </PaginationContent>
     </div>
   )
 }
