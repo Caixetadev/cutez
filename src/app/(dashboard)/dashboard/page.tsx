@@ -48,7 +48,7 @@ async function fetchLink({
     },
   })
 
-  const total = await db.link.count()
+  const total = await db.link.count({ where: { creatorId: userID } })
 
   return {
     data: links,
